@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Emma Health</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background-color: #f8f5ff;
+        color: #2d2d2d;
+        padding: 40px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+
+      .container {
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(147, 112, 219, 0.12);
+        max-width: 500px;
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #9370db, #7b68ee);
+        padding: 40px 20px;
+        font-size: 24px;
+        font-weight: 600;
+        color: #ffffff;
+        position: relative;
+      }
+
+      .header::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 4px;
+        background-color: #ffffff;
+        border-radius: 2px;
+      }
+
+      .content {
+        padding: 40px 30px;
+      }
+
+      .welcome-text {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+
+      .info-text {
+        font-size: 15px;
+        color: #555;
+        line-height: 1.6;
+        margin: 15px 0;
+      }
+
+      .cta-button {
+        display: inline-block;
+        margin: 30px 0;
+        padding: 16px 28px;
+        background-color: #7b68ee;
+        color: #ffffff !important;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 12px;
+      }
+
+      .cta-button:hover {
+        background-color: #6a5acd;
+      }
+
+      .expiry-text {
+        font-size: 14px;
+        color: #888;
+        margin-top: 10px;
+      }
+
+      .fallback-link {
+        font-size: 13px;
+        color: #888;
+        word-break: break-all;
+        margin-top: 20px;
+      }
+
+      .support-text {
+        font-size: 14px;
+        color: #7b68ee;
+        margin-top: 25px;
+        font-weight: 500;
+      }
+
+      .footer {
+        background-color: #f8f5ff;
+        padding: 25px;
+        font-size: 14px;
+        color: #666;
+        border-top: 1px solid #e6d7f7;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: 600;
+        color: #7b68ee;
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 600px) {
+        .content {
+          padding: 30px 20px;
+        }
+
+        .header {
+          padding: 30px 15px;
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">Welcome to Emma Health</div>
+
+      <div class="content">
+        <div class="welcome-text">Hi <%= userName %>,</div>
+
+        <p class="info-text">
+          🎉 Your payment was successful! You’re officially part of Emma Health.
+        </p>
+
+        <p class="info-text">
+          Click the button below to securely complete your account setup and
+          begin your wellness journey.
+        </p>
+
+        <a href="<%= magicLinkUrl %>" class="cta-button">
+          Complete My Account
+        </a>
+
+        <div class="expiry-text">
+          This secure link expires in <strong>60 minutes</strong>.
+        </div>
+
+        <div class="fallback-link">
+          If the button doesn’t work, copy and paste this link into your
+          browser: <%= magicLinkUrl %>
+        </div>
+
+        <div class="support-text">
+          Need help? Email us anytime at help@myemmahealth.com
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="logo">Emma Health</div>
+        <p>&copy; 2026 Emma Health. All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+</html>
