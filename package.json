@@ -1,7 +1,7 @@
 {
-  "name": "emmahealth",
+  "name": "ysofthealth",
   "version": "1.0.0",
-  "description": "Emma Health is a basic Node.js application with a structured setup including middleware, routes, controllers, views, and common utilities.",
+  "description": "YSoft Health is a basic Node.js application with a structured setup including middleware, routes, controllers, views, and common utilities.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

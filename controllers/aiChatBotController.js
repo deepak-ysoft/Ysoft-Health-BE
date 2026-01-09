@@ -14,7 +14,7 @@ exports.chatBot = async (req, res) => {
   }
   try {
     const chatLogin = await axios.post(process.env.AI_CHATBOT_LOGIN_API, {
-      emma_user_id: userId,
+      ysoft_user_id: userId,
       email: process.env.AI_CHATBOT_LOGIN_EMAIL,
       password: process.env.AI_CHATBOT_LOGIN_PASSWORD,
     });
@@ -23,7 +23,7 @@ exports.chatBot = async (req, res) => {
     const createchatSession = await axios.post(
       process.env.AI_CHATBOT_SESSION_API,
       {
-        emma_user_id: userId,
+        ysoft_user_id: userId,
         email: process.env.AI_CHATBOT_LOGIN_EMAIL,
         password: process.env.AI_CHATBOT_LOGIN_PASSWORD,
       },
@@ -82,7 +82,7 @@ exports.chatAssistant = async (req, res) => {
     const chatResponse = await axios.post(
       process.env.AI_CHATBOT_CHAT_API,
       {
-        emma_user_id: userId,
+        ysoft_user_id: userId,
         session_id: session_id,
         prompt: prompt,
         history: history,
@@ -98,11 +98,11 @@ exports.chatAssistant = async (req, res) => {
 
     const pool = await connectToDatabase();
     const request = pool.request();
-    request.input("EmmaUserId", sql.UniqueIdentifier, userId);
+    request.input("YSoftUserId", sql.UniqueIdentifier, userId);
     request.input("SessionId", sql.NVarChar(100), session_id);
     request.input("Prompt", sql.NVarChar(sql.MAX), prompt);
     request.input("Response", sql.NVarChar(sql.MAX), aiReply);
-    await request.execute("sp_InsertEmmaChatbotConversation");
+    await request.execute("sp_InsertYSoftChatbotConversation");
     const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
     await logActivity({
       type: "AI_CHAT_BOT",
@@ -132,13 +132,15 @@ exports.getChatHistory = async (req, res) => {
     const pool = await connectToDatabase();
     const request = await pool.request();
 
-    request.input("EmmaUserId", sql.UniqueIdentifier, userId);
+    request.input("YSoftUserId", sql.UniqueIdentifier, userId);
     request.input("StartDate", sql.DateTime, new Date("2000-01-01")); // optional
     request.input("EndDate", sql.DateTime, new Date());
     request.input("PageNumber", sql.Int, pageNumber);
     request.input("PageSize", sql.Int, pageSize);
 
-    const result = await request.execute("sp_GetEmmaChatbotConversationsPaged");
+    const result = await request.execute(
+      "sp_GetYSoftChatbotConversationsPaged"
+    );
 
     return response.SuccessResponseWithData(
       res,

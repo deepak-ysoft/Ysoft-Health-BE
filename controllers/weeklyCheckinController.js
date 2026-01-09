@@ -35,7 +35,7 @@ exports.saveWeeklyCheckin = async (req, res) => {
 
     const request = await pool
       .request()
-      .input("EmmaUserId", sql.VarChar(50), userId)
+      .input("YSoftUserId", sql.VarChar(50), userId)
       .input("WeekStartDate", sql.Date, date)
       .input("JsonData", sql.NVarChar(sql.MAX), jsonData)
       .input("FormScore", sql.Decimal(5, 2), totalScore);
@@ -80,7 +80,7 @@ exports.getWeeklycheckIn = async (req, res) => {
   try {
     const pool = await connectToDatabase();
     const request = await pool.request();
-    request.input("EmmaUserId", sql.VarChar(50), userId);
+    request.input("YSoftUserId", sql.VarChar(50), userId);
     request.input("WeekStartDate", sql.Date, date);
     const result = await request.execute("pwa_GetWeeklyCheckIn");
     const data = result.recordsets[0][0].ResponseJson;

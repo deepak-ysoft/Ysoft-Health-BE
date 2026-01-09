@@ -1,11 +1,12 @@
-# Emma Health
+# YSoft Health
 
-Emma Health is a basic Node.js application with a structured setup including middleware, routes, controllers, views, and common utilities.
+YSoft Health is a basic Node.js application with a structured setup including
+middleware, routes, controllers, views, and common utilities.
 
 ## Project Structure
 
 ```
-emmaHealth/
+ysoftHealth/
 ├── app.js
 ├── common/
 │   └── response.js
@@ -37,21 +38,25 @@ emmaHealth/
 ## Installation
 
 1. Clone the repository:
+
    ```bash
-   git clone https://github.com/yourusername/emmaHealth.git
-   cd emmaHealth
+   git clone https://github.com/yourusername/ysoftHealth.git
+   cd ysoftHealth
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
-3. Create a `.env` file based on `.env.example` and configure your environment variables, including the database connection string.
+3. Create a `.env` file based on `.env.example` and configure your environment
+   variables, including the database connection string.
 
 ## Usage
 
 1. Start the server:
+
    ```bash
    npm start
    ```
@@ -86,4 +91,3 @@ JWT_SECRET=your_jwt_secret
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_app_password
 ```
-

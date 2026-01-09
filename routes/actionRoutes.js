@@ -1669,7 +1669,7 @@ router.get(
  *                             description: Whether the recipe can be logged
  *                           source:
  *                             type: string
- *                             example: "Emma Health"
+ *                             example: "YSoft Health"
  *                             description: The source of the recipe
  *                           Ingredients:
  *                             type: array

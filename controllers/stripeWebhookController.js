@@ -57,7 +57,7 @@ async function createMagicLoginLink(email) {
     `);
 
   return {
-    url: `https://dev.emmahealth.app/onboarding?token=${token}`,
+    url: `https://dev.ysofthealth.app/onboarding?token=${token}`,
     type: "ONBOARDING",
   };
 }
@@ -102,7 +102,7 @@ async function sendWelcomeEmail({ email, userName, magicLinkUrl }) {
     const data = {
       from: process.env.EMAIL_USER,
       to: email,
-      subject: "Welcome to Emma Health – Complete Your Account",
+      subject: "Welcome to YSoft Health – Complete Your Account",
       html: htmlContent,
     };
 

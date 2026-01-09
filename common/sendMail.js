@@ -7,25 +7,25 @@ const API_KEY = process.env.MAILGUN_API_KEY;
 const FROM_EMAIL = process.env.EMAIL_USER;
 
 async function sendMail(to, subject, templateData) {
-    if (!DOMAIN || !API_KEY || !FROM_EMAIL) {
-        console.error("Missing Mailgun configuration. Check your .env file.");
-        throw new Error("Mailgun configuration missing");
-    }
+  if (!DOMAIN || !API_KEY || !FROM_EMAIL) {
+    console.error("Missing Mailgun configuration. Check your .env file.");
+    throw new Error("Mailgun configuration missing");
+  }
 
-    const mailgun = new Mailgun(FormData);
-    const mg = mailgun.client({
-        username: "api",
-        key: API_KEY,
-    });
+  const mailgun = new Mailgun(FormData);
+  const mg = mailgun.client({
+    username: "api",
+    key: API_KEY,
+  });
 
-    // Embed the HTML template directly
-    const htmlTemplate = `
+  // Embed the HTML template directly
+  const htmlTemplate = `
         <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>OTP for Password Reset - Emma Health</title>
+            <title>OTP for Password Reset - YSoft Health</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -101,33 +101,33 @@ async function sendMail(to, subject, templateData) {
                     <p>For your security, do not share this OTP with anyone.</p>
                 </div>
                 <div class="footer">
-                    <p>If you have any questions, feel free to <a href="mailto:info@emmahealth.com">contact our support team</a>.</p>
-                    <p>&copy; 2024 Emma Health. All rights reserved.</p>
+                    <p>If you have any questions, feel free to <a href="mailto:info@ysofthealth.com">contact our support team</a>.</p>
+                    <p>&copy; 2024 YSoft Health. All rights reserved.</p>
                 </div>
             </div>
         </body>
         </html>
     `;
 
-    try {
-        console.log("Sending email to:", to);
-        console.log("Using template data:", templateData);
+  try {
+    console.log("Sending email to:", to);
+    console.log("Using template data:", templateData);
 
-        const result = await mg.messages.create(DOMAIN, {
-            from: `Emma Health <${FROM_EMAIL}>`,
-            to: [to],
-            subject: subject,
-            html: htmlTemplate,
-        });
+    const result = await mg.messages.create(DOMAIN, {
+      from: `YSoft Health <${FROM_EMAIL}>`,
+      to: [to],
+      subject: subject,
+      html: htmlTemplate,
+    });
 
-        console.log("Mailgun response:", result);
-        return result;
-    } catch (error) {
-        console.error("Mailgun error:", error);
-        throw error;
-    }
+    console.log("Mailgun response:", result);
+    return result;
+  } catch (error) {
+    console.error("Mailgun error:", error);
+    throw error;
+  }
 }
 
 module.exports = {
-    sendMail,
+  sendMail,
 };

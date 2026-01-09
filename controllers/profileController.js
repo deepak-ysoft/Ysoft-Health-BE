@@ -1180,11 +1180,11 @@ exports.createContactUsSubmission = async (req, res) => {
       }
     }
 
-    // Send notification email to info@myemmahealth.com
+    // Send notification email to info@myysofthealth.com
     try {
       const sendMail = require("../utils/sendMail"); // Adjust path as needed
       await sendMail({
-        to: "info@myemmahealth.com",
+        to: "info@myysofthealth.com",
         subject: `New Contact Us Submission: ${Subject}`,
         text: `Name: ${Name}\nEmail: ${Email}\nSubject: ${Subject}\nMessage:\n${Message}`,
       });
@@ -1401,7 +1401,7 @@ exports.getUserEatingPreferences = async (req, res) => {
   try {
     const pool = await connectToDatabase();
     const request = pool.request();
-    request.input("EmmaUserId", sql.NVarChar(50), userId);
+    request.input("YSoftUserId", sql.NVarChar(50), userId);
 
     const result = await request.execute("pwa_GetUserPreferences");
 
@@ -1432,7 +1432,7 @@ exports.addUserEatingPreferences = async (req, res) => {
     const pool = await connectToDatabase();
     const request = pool.request();
 
-    request.input("EmmaUserId", sql.NVarChar(50), userId);
+    request.input("YSoftUserId", sql.NVarChar(50), userId);
     request.input("PreferenceType", sql.NVarChar(20), PreferenceType);
     request.input("Ingredient", sql.NVarChar(100), Ingredient);
 

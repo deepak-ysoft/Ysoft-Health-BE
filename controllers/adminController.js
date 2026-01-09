@@ -4220,7 +4220,7 @@ exports.getAIProcessedResult = async (req, res) => {
       },
     }));
     const responseData = {
-      emmaUserId: userId,
+      ysoftUserId: userId,
       firstName: orderInfo[0].patientName.split(" ")[1] || "",
       lastName: orderInfo[0].patientName.split(" ")[0] || "",
       recognizedAt: new Date().toISOString(),

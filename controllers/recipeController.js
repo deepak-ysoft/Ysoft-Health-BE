@@ -27,7 +27,7 @@ exports.analyzeRecipe = async (req, res) => {
     }
 
     const formData = new FormData();
-    formData.append("emmaUserId", userId);
+    formData.append("ysoftUserId", userId);
     formData.append("diet_type", "fodmap");
     formData.append("file", req.file.buffer, {
       filename: req.file.originalname,
@@ -104,7 +104,7 @@ exports.analyzeRecipe = async (req, res) => {
     const pool = await connectToDatabase();
     const request = pool.request();
 
-    request.input("EmmaUserId", sql.NVarChar(50), data.emmaUserId);
+    request.input("YSoftUserId", sql.NVarChar(50), data.ysoftUserId);
     request.input("DietType", sql.NVarChar(50), data.diet_type);
     request.input("IsFood", sql.Bit, data.is_food);
     request.input(
@@ -162,8 +162,8 @@ exports.getRecipeDetailsById = async (req, res) => {
     const mealComponents = recordsets[2] || [];
     const fodmapComponents = recordsets[3] || [];
     // Validate required fields
-    if (!baseData.EmmaUserId) {
-      throw new Error("Missing EmmaUserId in base data");
+    if (!baseData.YSoftUserId) {
+      throw new Error("Missing YSoftUserId in base data");
     }
     // Build FODMAP components lookup
     const fodmapLookup = {};
