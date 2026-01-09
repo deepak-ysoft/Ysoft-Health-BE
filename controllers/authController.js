@@ -20,7 +20,6 @@ exports.register = async (req, res) => {
 
   try {
     // Check if user already exists
-    // Check if user already exists
     const existingUser = await getUserByEmail(email);
 
     if (existingUser) {
@@ -51,13 +50,13 @@ exports.register = async (req, res) => {
       return response.NotFound(res, "User not found after registration");
     }
 
-    // Check payment status
-    const paymentResult = await pool
-      .request()
-      .input("email", sql.NVarChar(255), email.toLowerCase())
-      .query("SELECT email FROM paid_users WHERE email = @email");
+    // // Check payment status
+    // const paymentResult = await pool
+    //   .request()
+    //   .input("email", sql.NVarChar(255), email.toLowerCase())
+    //   .query("SELECT email FROM paid_users WHERE email = @email");
 
-    const hasPayment = paymentResult.recordset.length > 0;
+    // const hasPayment = paymentResult.recordset.length > 0;
 
     // Check onboarding status
     let isOnboarded = false;
@@ -94,7 +93,7 @@ exports.register = async (req, res) => {
     response.SuccessResponseWithData(res, "User registered successfully", {
       user: userDetails,
       token,
-      payment: hasPayment, // Include payment status in response
+      // payment: hasPayment, // Include payment status in response
     });
   } catch (err) {
     response.InternalServerError(res, err);
